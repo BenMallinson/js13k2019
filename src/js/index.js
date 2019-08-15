@@ -6,8 +6,6 @@ function update() {
 
 document.addEventListener("DOMContentLoaded", () => {
   spritesheet.onload = (e) => {
-    console.log('hello')
     update()
   }
-
 })

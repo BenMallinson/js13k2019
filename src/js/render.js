@@ -4,6 +4,7 @@ function render () {
   context.fillRect(0, 0, window.canvas.width, canvas.height);
   level.render()
   player.render()
+  conversationManager.renderConversation()
 }
 
 function clear () {
