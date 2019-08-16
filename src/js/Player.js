@@ -9,7 +9,7 @@ class Player {
     this.targetY = this.y
     this.activeFrame = 0
     this.up = true
-    this.movementLocked = false
+    this.inConversation = false
     this.onKeyDown = this.onKeyDown.bind(this)
     this.incrementActiveFrame = this.incrementActiveFrame.bind(this)
     this.calculateCollision = this.calculateCollision.bind(this)
@@ -24,7 +24,7 @@ class Player {
   }
 
   onKeyDown (e) {
-    if(this.movementLocked) return
+    if(this.inConversation) return
        this.targetX = this.x
     this.targetY = this.y
       switch (e.key) {
@@ -52,7 +52,7 @@ class Player {
     let action = this.isCollisionAction()
     if(action) {
       conversationManager.setConversation(action)
-      this.movementLocked = true
+      this.inConversation = true
     }
   }
 
@@ -68,7 +68,7 @@ class Player {
   }
 
   unlockMovement () {
-    this.movementLocked = false
+    this.inConversation = false
   }
 
   reset () {
