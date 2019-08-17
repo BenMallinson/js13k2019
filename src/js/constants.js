@@ -1,5 +1,5 @@
 const RED = '#ea2627'
-const DARK_RED = '#a40001'
+const DARK_RED = '#aa2521'
 const BLACK = '#121212'
 const WHITE = '#e7e7e7'
 
