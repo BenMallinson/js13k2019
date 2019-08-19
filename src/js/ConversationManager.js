@@ -42,17 +42,19 @@ class ConversationManager {
   renderConversation () {
     if(this.activeConversation === null) return
     const { person, conversationChunks, currentLine, actions } = this.activeConversation
-    context.fillStyle = BLACK
-    context.strokeStyle = WHITE
+    context.fillStyle = LIGHT
+    context.strokeStyle = VERY_DARK
     context.lineWidth = 2
     context.fillRect(16, 208, 32, 32)
     context.strokeRect(16, 208, 32, 32)
     context.drawImage(spritesheet, npcConfig[person].portrait * TILE_SIZE, 0, 16, 16, 18, 210, 28, 28)
+    context.fillStyle = VERY_DARK
+    context.strokeStyle = LIGHT
     context.fillRect(64, 208, 176, 32)
     context.strokeRect(64, 208, 176, 32)
     context.stroke()
     context.font = "8px Arial";
-    context.fillStyle = WHITE
+    context.fillStyle = LIGHT
     context.textAlign = 'left'
 
     // get the active conversation based on the activeIndex on the npc
@@ -69,16 +71,16 @@ class ConversationManager {
 
   renderActions() {
     const { person, conversationChunks, currentLine, actions } = this.activeConversation
-    context.fillStyle = WHITE;
+    context.fillStyle = LIGHT;
     context.lineWidth = 2
     context.fillRect(160, 232, 32, 16)
     context.fillRect(200, 232, 32, 16)
-    context.strokeStyle = this.selectedAction === 0 ? RED : BLACK;
+    context.strokeStyle = this.selectedAction === 0 ? MID : VERY_DARK;
     context.strokeRect(160, 232, 32, 16)
-    context.strokeStyle = this.selectedAction === 1 ? RED : BLACK;
+    context.strokeStyle = this.selectedAction === 1 ? MID : VERY_DARK;
     context.strokeRect(200, 232, 32, 16)
     context.font = "8px Arial";
-    context.fillStyle = BLACK
+    context.fillStyle = VERY_DARK
     context.textAlign = 'center'
     context.fillText(actions[0].trim(), 175, 242, 188);
     context.fillText(actions[1].trim(), 215, 242, 188);

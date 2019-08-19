@@ -64,6 +64,7 @@ class Player {
   }
 
   calculateCollision() {
+    console.log(levelData.m[(this.targetX * 16) + this.targetY][2], nonWalkableTiles)
     return nonWalkableTiles.indexOf(levelData.m[(this.targetX * 16) + this.targetY][2]) < 0
   }
 
