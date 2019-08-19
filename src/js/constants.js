@@ -19,7 +19,7 @@ const context = canvas.getContext('2d')
 const levelData = getLevel()
 const level = new Map(levelData)
 const spritesheet = new Image()
-spritesheet.src = "res/sprites/spritesheet.png"
+spritesheet.src = "spritesheet.png"
 
 const characterTiles = [
   26, 25, 24, 23
