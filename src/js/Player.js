@@ -1,16 +1,12 @@
 class Player {
 
   constructor () {
-    this.width = TILE_SIZE
-    this.height = TILE_SIZE
     this.x = 0
     this.y = 0
     this.targetX = this.x
     this.targetY = this.y
     this.activeFrame = 0
     this.up = true
-    this.inConversation = false
-    this.onKeyDown = this.onKeyDown.bind(this)
     this.incrementActiveFrame = this.incrementActiveFrame.bind(this)
     this.calculateCollision = this.calculateCollision.bind(this)
     this.isCollisionAction = this.isCollisionAction.bind(this)
@@ -20,14 +16,12 @@ class Player {
     setInterval(() => {
       this.incrementActiveFrame()
     }, 250)
-    window.addEventListener("keydown", this.onKeyDown, false);
   }
 
-  onKeyDown (e) {
-    if(this.inConversation) return
-       this.targetX = this.x
+  processInput (key) {
+    this.targetX = this.x
     this.targetY = this.y
-      switch (e.key) {
+      switch (key) {
         case 'd': //d
           this.targetX = this.x + 1
           break;
@@ -44,7 +38,7 @@ class Player {
 
     let shouldMove = this.calculateCollision()
     if(shouldMove) {
-      if((this.targetX !== -1 && this.targetX !== 16) && (this.targetY !== -1 && this.targetY !== 16)) {
+      if((this.targetX !== -1 && this.targetX !== MAP_SIZE_X) && (this.targetY !== -1 && this.targetY !== MAP_SIZE_Y)) {
         this.x = this.targetX
         this.y = this.targetY
       }
@@ -52,20 +46,20 @@ class Player {
     let action = this.isCollisionAction()
     if(action) {
       conversationManager.setConversation(action)
-      this.inConversation = true
+      inputManager.setInMenu(true)
     }
   }
 
   isCollisionAction () {
-    if(characterTiles.indexOf(levelData.m[(this.targetX * 16) + this.targetY][2]) > -1) {
-      return levelData.m[(this.targetX * 16) + this.targetY][2]
+    console.log(characterTiles.indexOf(levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) > -1)
+    if(characterTiles.indexOf(levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) > -1) {
+      return levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]
     }
     return false
   }
 
   calculateCollision() {
-    console.log(levelData.m[(this.targetX * 16) + this.targetY][2], nonWalkableTiles)
-    return nonWalkableTiles.indexOf(levelData.m[(this.targetX * 16) + this.targetY][2]) < 0
+    return nonWalkableTiles.indexOf(levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) < 0
   }
 
   unlockMovement () {
@@ -85,17 +79,17 @@ class Player {
   }
 
   render() {
-    const spriteIndex = 16 * (13 + this.activeFrame)
+    const spriteIndex = TILE_SIZE * (13 + this.activeFrame)
     context.drawImage(
       spritesheet,
       spriteIndex,
       0,
-      this.width,
-      this.height,
+      TILE_SIZE,
+      TILE_SIZE,
       this.x * TILE_SIZE,
       this.y * TILE_SIZE,
-      this.width,
-      this.height,
+      TILE_SIZE,
+      TILE_SIZE,
     )
   }
 }

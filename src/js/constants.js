@@ -4,11 +4,17 @@ const DARK = '#376d03'
 const VERY_DARK = '#172808'
 
 const TILE_SIZE = 16
-const GAME_WIDTH = TILE_SIZE * TILE_SIZE
-const GAME_HEIGHT = TILE_SIZE * TILE_SIZE
+const MAP_SIZE_X = 10
+const MAP_SIZE_Y = 9
+const GAME_WIDTH = MAP_SIZE_X * TILE_SIZE
+const GAME_HEIGHT = MAP_SIZE_Y * TILE_SIZE
+
+// X = 160
+// Y = 144
 
 const player = new Player()
 const conversationManager = new ConversationManager()
+const inputManager = new InputManager()
 
 const canvas = document.querySelector('canvas')
 canvas.height = GAME_HEIGHT
@@ -26,11 +32,11 @@ const characterTiles = [
 ]
 
 const buildingTiles = [
-  4, 5, 3, 7, 6, 8, 1
+  2,3,4,5
 ]
 
 const badTiles = [
-   18, 19, 22, 43
+   18, 19, 22, 43, 10, 7, 8, 46, 47, 48, 40
 ]
 
 const nonWalkableTiles = [

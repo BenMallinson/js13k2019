@@ -20,7 +20,9 @@ task('compile', () =>
     .pipe(concat('app.js'))
     .pipe(removeCode({ production: true }))
     .pipe(terser({
-      mangle: true,
+      mangle: {
+        properties: true,
+      },
       toplevel: true,
     }))
     .pipe(dest('dist')),

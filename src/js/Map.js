@@ -21,10 +21,10 @@ class Map {
 
       if(MAP_DEBUG) {
         context.font = "10px Arial";
-        context.fillStyle = LIGHT
+        context.fillStyle = 'blue'
         context.textAlign = 'left'
         context.textBaseline = 'hanging'
-        context.fillText(this.level.m[i][2], this.level.m[i][0] * TILE_SIZE , this.level.m[i][1] * TILE_SIZE , 16);
+        context.fillText(this.level.m[i][2], this.level.m[i][0] * TILE_SIZE , this.level.m[i][1] * TILE_SIZE , TILE_SIZE);
       }
     }
   }
