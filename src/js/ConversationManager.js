@@ -64,7 +64,7 @@ class ConversationManager {
     context.textAlign = 'left'
 
     // get the active conversation based on the activeIndex on the npc
-    context.fillText(conversationChunks[currentLine][0].trim(), 46, 128, 128)
+    context.fillText(conversationChunks[currentLine][0].trim(), 46, 128)
     if(this.displayActions && this.finishedConversation() && actions) {
       this.renderActions()
     }

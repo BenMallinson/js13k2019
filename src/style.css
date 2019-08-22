@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    background-color: #222;
+    background: url('background.png') repeat;
+    background-size: 175px 175px;
 }
 #container {
     display: flex;
@@ -8,10 +9,14 @@ body {
     align-items: center;
     justify-content: center;
     height:100vh;
+
 }
 canvas {
-    width: 320px;
-    height: 288px;
-    image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    box-shadow: 5px 5px 30px 5px rgba(79,79,79,0.3);
+    border: solid #222 3px;
+    transform: scale(4);
 }
