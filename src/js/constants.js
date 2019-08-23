@@ -22,8 +22,7 @@ canvas.width = GAME_WIDTH
 
 const context = canvas.getContext('2d')
 
-const levelData = getLevel()
-const level = new Map(levelData)
+const mapManager = new Map()
 const spritesheet = new Image()
 spritesheet.src = "spritesheet.png"
 
@@ -36,7 +35,7 @@ const buildingTiles = [
 ]
 
 const badTiles = [
-   18, 19, 22, 43, 10, 7, 8, 46, 47, 48, 40
+   18, 19, 22, 43, 10, 8, 46, 47, 48, 40, 49, 51, 52, 39, 54
 ]
 
 const nonWalkableTiles = [
@@ -47,4 +46,4 @@ const nonWalkableTiles = [
 
 const MAP_DEBUG = false
 
-console.log(level)
+console.log(mapManager.level)

@@ -36,30 +36,47 @@ class Player {
           break;
       }
 
+     
     let shouldMove = this.calculateCollision()
-    if(shouldMove) {
-      if((this.targetX !== -1 && this.targetX !== MAP_SIZE_X) && (this.targetY !== -1 && this.targetY !== MAP_SIZE_Y)) {
+    if(shouldMove && (this.targetX !== -1 && this.targetX !== MAP_SIZE_X) && (this.targetY !== -1 && this.targetY !== MAP_SIZE_Y)) {
         this.x = this.targetX
         this.y = this.targetY
-      }
     }
     let action = this.isCollisionAction()
     if(action) {
       conversationManager.setConversation(action)
       inputManager.setInMenu(true)
     }
+  return false
   }
 
   isCollisionAction () {
-    console.log(characterTiles.indexOf(levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) > -1)
-    if(characterTiles.indexOf(levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) > -1) {
-      return levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]
+    if(this.targetX !== -1 && this.targetY !== -1) {
+      if(characterTiles.indexOf(mapManager.level.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) > -1) {
+        return mapManager.level.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]
+      }
     }
-    return false
-  }
+
+    const levelNavigation = Object.keys(levels[mapManager.currentLevel].navigation)
+    
+    const navigateTo = levelNavigation.find(level => {
+      return levels[mapManager.currentLevel].navigation[level][0] === this.targetX && levels[mapManager.currentLevel].navigation[level][1] === this.targetY
+    })
+
+
+    if(navigateTo) {
+      console.log(navigateTo)
+      this.x = levels[navigateTo].playerStart[mapManager.currentLevel][0]
+      this.y = levels[navigateTo].playerStart[mapManager.currentLevel][1]
+      return mapManager.changeMap(navigateTo)
+   }
+  return false
+}
 
   calculateCollision() {
-    return nonWalkableTiles.indexOf(levelData.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) < 0
+    if(this.targetX !== -1 && this.targetY !== -1) {
+      return nonWalkableTiles.indexOf(mapManager.level.m[(this.targetX * MAP_SIZE_Y) + this.targetY][2]) < 0
+    }
   }
 
   unlockMovement () {

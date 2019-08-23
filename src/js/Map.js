@@ -1,7 +1,13 @@
 class Map {
+  constructor() {
+    this.currentLevel = 'start'
+    this.level = getLevel(this.currentLevel)
+    this.changeMap = this.changeMap.bind(this)
+  }
 
-  constructor(level) {
-    this.level = level
+  changeMap (newLevel) {
+    this.currentLevel = newLevel
+    this.level = getLevel(this.currentLevel)
   }
 
   render () {
@@ -20,7 +26,7 @@ class Map {
 
 
       if(MAP_DEBUG) {
-        context.font = "10px Arial";
+        context.font = "10px Impact";
         context.fillStyle = 'blue'
         context.textAlign = 'left'
         context.textBaseline = 'hanging'
