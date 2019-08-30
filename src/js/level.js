@@ -2,10 +2,12 @@ const levels = {
   start:  {
     map: `0*)1! ;!!;!";!#;!$M"$5#$5$$5%$5&$5'$>'%;'&;'#;'";'!?($5)$5*$#+#3*%3*#6+%6+$*##%$#*""* %D* D)&D !D*'I#&I &I*!I% I&%J #J)"J# J%#I%%D$"D"#H&#K(!7('*&&*(&F&'E''3"%&$'& "& $&!%&!&& '&"&&%'&%&&$&&$%&#%&(%&)%&*&&+&&+'&)'&)#&(#&("&*"&+"&+!&+ &)!&) &( &' && &&"&%"&$!&$ &#!&"!&" &#"&  & (&$(&%(&&(&'(&((&)(&#(2"'2#'3!'3"(6!(6%!Q&!&`,
     navigation: {
-      mansionOuter: [10, 4]
+      mansionOuter: [10, 4],
+      shopDownstairs: [3, 3]
     },
     playerStart: {
       mansionOuter: [9, 4],
+      shopDownstairs: [3, 4]
     }
   },
   mansionOuter: {
@@ -13,12 +15,12 @@ const levels = {
     navigation: {
       start: [-1, 5],
       mansionInner: [5, 2],
-      fire: [8, 2]
+      water: [8, 2]
     },
     playerStart: {
       start: [0, 5],
       mansionInner: [5, 3],
-      fire: [8, 1],
+      water: [8, 1],
     }
   },
   mansionInner: {
@@ -30,7 +32,7 @@ const levels = {
       mansionOuter: [5, 8],
     }
   },
-  fire: {
+  water: {
     map: `0*)1 (V!(V"(V#(V$(V%(V('V)(V((V'(V&(V&'V)'V''V&&V#&V!&V*&V"'V$'V%'V#'V!'V$&V(&V)&V'&V%&V"&V 'V &V %V!%V)%V)$V'$V&$V%$V#$V$$V!$V $V&#V'#V)#V*#V*"V)"V'"V&"V%#V$#V##V!#V #V "V!"V#"V%"V$"V !V!!V#!V'!V  V* V) V( V' V& V% V$ V# V$!V%!V&!V" ;"!;"";"#;"$;"%M#%5'%5(%L($;(#;(";(!<)!5! V%%)$%)&%)`,
     navigation: {
       mansionOuter: [2, -1]
@@ -38,8 +40,28 @@ const levels = {
     playerStart: {
       mansionOuter: [2, 0]
     }
+  },
+  shopDownstairs: {
+    map: `0*)1"'S#'S$'S&'S''S('S(&S(%S($S(#S("S(!S'!S&!S%!S$!S#!S"!S""S"#S##S$#S$$S$%S#%S"%S"&S#"4%'U'(J)$J$ J %J!(J$(I"$I  I) I)"D)'D!"D$"'&"'%"'%#'&#''#''$'%$'%%'&%''%''&'&&'%&'$&'#&'&$8'"'! &" &# &!!& !& "& #&!#&!$& $&#$&!%&!&&!'& && '& (&"(&#(&&(&((&)(&)&&)%&)#&)!&( &' && &% &%(;`,
+    navigation: {
+      start: [5, 7],
+      shopUpstairs: [3, 2]
+    },
+    playerStart: {
+      start: [5, 6],
+      shopUpstairs: [4, 2]
+    }
+  },
+  shopUpstairs: {
+    map: `0*)1"'S#'S$'S&'S''S('S(&S(%S($S(#S("S(!S'!S&!S%!S$!S#!S"!S""S"#S##S$#S$$S$%S#%S"%S"&S'(J)$J$ J %J!(J$(I"$I  I) I)"D)'D!"D$"'%"'%#'&#''#''$'%$''&'&&'%&'$&'#",&%R%'S'"G&"''%+&$'#&T%%'! &" &# &% && &' &( &)!&)#&)%&)&&)(&((&&(&%(&#(&"(& (& '& &&!'&!&&!%&!$& $&!#& #& "& !&!!&#$&`,
+    navigation: {
+      shopDownstairs: [3, 2],
+      fire: [6, 5]
+    },
+    playerStart: {
+      shopDownstairs: [4, 2]
+    }
   }
-
 }
 
 function getLevel(key) {
